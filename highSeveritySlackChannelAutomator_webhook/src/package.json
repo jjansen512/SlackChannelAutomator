@@ -1,0 +1,47 @@
+{
+    "name": "slack-channel-automator-webhook-version",
+    "version": "1.6.6",
+    "description": "Automator to streamline the Slack channel creation process",
+    "type": "module",
+    "scripts": {
+        "ext": "parcel build ./manifest.json --config @parcel/config-webextension --dist-dir ../dist --no-source-maps",
+        "start": "parcel serve ./manifest.json --config @parcel/config-webextension --public-url / --dist-dir ../dist"
+    },
+    "author": "@jjansena",
+    "repository": "ssh://git.amazon.com/pkg/HighSeveritySlackChannelAutomator",
+    "homepage": "https://code.amazon.com/packages/HighSeveritySlackChannelAutomator",
+    "license": "ISC",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.2.1",
+        "axios": "^1.2.2",
+        "bootstrap": "^5.2.3",
+        "bootstrap-dark-5": "^1.1.3",
+        "dotenv": "^16.0.3",
+        "https-proxy-agent": "^5.0.1",
+        "jquery": "^3.6.2",
+        "mdb-ui-kit": "^6.0.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-select": "^5.7.2",
+        "request": "^2.88.2",
+        "sse": "^0.0.8"
+    },
+    "devDependencies": {
+        "@parcel/config-webextension": "^2.8.3",
+        "assert": "^2.0.0",
+        "browserify-zlib": "^0.2.0",
+        "buffer": "^5.7.1",
+        "constants-browserify": "^1.0.0",
+        "crypto-browserify": "^3.12.0",
+        "events": "^3.3.0",
+        "https-browserify": "^1.0.0",
+        "parcel": "^2.8.2",
+        "path-browserify": "^1.0.1",
+        "process": "^0.11.10",
+        "punycode": "^1.4.1",
+        "querystring-es3": "^0.2.1",
+        "stream-browserify": "^3.0.0",
+        "stream-http": "^3.2.0",
+        "url": "^0.11.0"
+    }
+}

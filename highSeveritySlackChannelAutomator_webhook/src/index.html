@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html
+	id="extHTML"
+	lang="en"
+	class="dark"
+>
+	<!--  Main head for app -->
+
+	<head>
+		<!--  meta info -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<meta
+			name="color-scheme"
+			content="dark light"
+		/>
+		<title>High Severity Slack Button</title>
+
+		<!--  Load alt CSS first ...
+			in this case bootstrap nightshade -->
+		<link
+			href="./node_modules/bootstrap-dark-5/dist/css/bootstrap-nightshade.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			k
+			href="./MdbCustomCode/css/mdb.custom.min.css"
+		/>
+		<link
+			id="styleCss"
+			rel="stylesheet"
+			href="./css/style.css"
+		/>
+
+		<!-- @note additional css stylesheets -->
+		<link
+			rel="stylesheet"
+			href="./node_modules/@fortawesome/fontawesome-free/css/solid.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="./css/ldbtn.css"
+		/>
+
+		<!-- Main Script -->
+		<script
+			type="module"
+			src="./js/main.js"
+		></script>
+	</head>
+
+	<!-- Main body of html extension -->
+
+	<body id="extBody">
+		<!-- popup placeholder -->
+		<div data-bind="dxPopup: { onInitialized: onInit, ... }">
+			<!-- global canvas window width  -->
+			<div
+				id="canvas"
+				class="container-fluid p-2"
+			>
+				<button
+					id="openTicketSelectModal"
+					class="btn btn-sm btn-danger btn-floating shadow-3-strong float-start"
+					type="button"
+					data-mdb-toggle="tooltip"
+					title="Open ticket select menu"
+					style="
+						position: relative;
+						margin-right: 4px;
+						display: none !important;
+					"
+				>
+					<i class="fa-solid fa-table-list"></i>
+				</button>
+				<div
+					id="popupButtonArea"
+					class="d-flex justify-content-between"
+					style="display: none !important"
+				>
+					<button
+						id="openPopup"
+						class="btn btn btn-sm btn-primary btn-floating shadow-3-strong"
+						type="button"
+						data-mdb-toggle="tooltip"
+						title="Open extension in a popup window"
+						style="position: relative; border: 1px solid rgba(0, 0, 0, 0)"
+					>
+						<i class="fa-solid fa-window-restore"></i>
+					</button>
+
+					<!-- light/dark toggle -->
+					<div
+						id="themeSwitchArea"
+						class="d-flex justify-content-start"
+						style="display: none !important"
+					>
+						<button
+							id="css-toggle-btn"
+							class="btn btn-sm btn-dark btn-floating shadow-3-strong"
+							tooltip="Toggle Dark/Light Theme"
+						>
+							<i class="fa-solid fa-circle-half-stroke"></i>
+						</button>
+					</div>
+				</div>
+				<!--  main page welcome alert -->
+				<br />
+				<div
+					id="mainPageAlertPlaceholder"
+					class="placeholder-glow"
+					style="
+						display: block !important;
+						display: flex !important;
+						justify-content: space-between !important;
+					"
+				>
+					<a
+						class="btn-primary btn-floating disabled placeholder left"
+						aria-hidden="true"
+						href="#"
+						tabindex="-1"
+						style="float: left !important"
+					></a>
+
+					<a
+						class="btn btn-sm btn-rounded disabled placeholder"
+						aria-hidden="true"
+						href="#"
+						tabindex="-1"
+						style="width: 10%; float: right !important"
+					></a>
+				</div>
+				<div
+					id="mainPageAlert"
+					style="display: none !important"
+				>
+					<!-- 					<span>
+						Please ensure you run
+						<code>mwinit --aea</code> or connect to vpn for full functionality
+					</span>
+					<button
+						class="btn-close"
+						data-mdb-dismiss="alert"
+						aria-label="Close"
+						type="button"
+					></button> -->
+				</div>
+				<!-- @audit URL Mismatch Alert Modal -->
+				<div
+					id="selectTicketTitleButtonModal"
+					class="modal fade"
+					data-mdb-backdrop="static"
+					data-mdb-keyboard="false"
+					aria-hidden="true"
+					aria-labelledby="staticBackdropLabel"
+					tabindex="-1"
+				>
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">
+									<i class="fa-solid fa-info-circle"></i>
+								</h5>
+							</div>
+							<div class="modal-body">
+								<p>
+									<strong
+										>Slack Channel Automator detected active tickets in browser,
+										select a ticket below:
+									</strong>
+								</p>
+								<!-- React elemet placeholder -->
+								<div id="foundTicketsPlaceholder"></div>
+								<br />
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-primary btn-rounded"
+									data-mdb-dismiss="modal"
+									id="closeSelectTicketModal"
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					id="ModalMismatchedURL"
+					class="modal fade"
+					data-mdb-backdrop="static"
+					data-mdb-keyboard="false"
+					aria-hidden="true"
+					aria-labelledby="staticBackdropLabel"
+					tabindex="-1"
+				>
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">
+									<i
+										class="fa-solid fa-triangle-exclamation"
+										style="margin-right: 7px"
+									></i>
+									Warning
+								</h5>
+							</div>
+							<div class="modal-body">
+								<p
+									><strong
+										><p>
+											Extension may not support URL of active tab or has not
+											detected background tabs. Urls must be in the form of:
+											<code>t.corp.{your_company}.com/ticket_id</code>. Some
+											features may not work as expected.
+										</p>
+									</strong>
+								</p>
+								<p>
+									Enter ticket Id here to automatically navigate to the page:
+								</p>
+
+								<!--  Form for userTicketPrompt -->
+								<br />
+								<div class="input-group">
+									<div class="form-outline">
+										<input
+											type="text"
+											id="userTicketPromptInput"
+											class="form-control"
+										/>
+										<label
+											class="form-label"
+											for="inputText"
+											>Enter Ticket Id</label
+										>
+									</div>
+									<button
+										class="btn btn-primary input-group-text disabled"
+										type="submit"
+										id="userTicketPromptButton"
+									>
+										<i class="fas fa-paper-plane"></i>
+									</button>
+								</div>
+								<br />
+								<p>
+									<!-- 									<a
+										id="alertLinkRedirect"
+										rel="noopener"
+										class="alert-link"
+										href="https://t.corp.amazon.com"
+										target="_blank"
+									>
+										Or click here to open t.corp.amazon.com in a new tab...
+									</a> -->
+								</p>
+								<br />
+								<div class="modal-footer">
+									<!--                                     <button
+                                        id="urlMisMatchButtonClose"
+                                        class="btn btn-warning btn-rounded"
+                                        type="button"
+                                    >
+                                        Close
+                                    </button> -->
+									<button
+										id="ModalMismatchedURL_Continue"
+										class="btn btn-primary btn-rounded"
+										data-mdb-dismiss="modal"
+										type="button"
+									>
+										Continue
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- modalEdit params (start of modalEdit) -->
+				<div
+					id="modalEdit"
+					class="modal fade"
+					data-backdrop="static"
+					data-toggle="modal"
+					aria-hidden="true"
+					tabindex="-1"
+					role="dialog"
+				>
+					<div
+						class="modal-dialog modal-fullscreen d-grid"
+						role="document"
+					>
+						<div class="modal-content">
+							<!--  EditModal header -->
+							<div
+								id="ModalEdit_HeaderTitle"
+								class="modal-header"
+							>
+								<div
+									id="ModalEdit_Alert"
+									class="alert alert-info align-items-center d-flex fade show"
+									role="alert"
+								>
+									<i
+										class="fa-solid fa-circle-info"
+										style="margin-right: 15px"
+									></i>
+									Enter information below to send to Slack
+									<button
+										class="btn-close"
+										data-mdb-dismiss="alert"
+										aria-label="Close"
+										type="button"
+									></button>
+								</div>
+							</div>
+
+							<!--  Start of modal body content -->
+							<div class="p-4 flex-wrap">
+								<!--  Form for Ticket Id -->
+								<div
+									id="TicketIDDiv"
+									class="form-outline"
+									style="border-radius: 1rem"
+								>
+									<input
+										id="ticketInputPrompt"
+										class="form-control"
+										type="text"
+									/>
+									<label
+										class="form-label"
+										for="ticketInputPrompt"
+									>
+										Ticket Id
+									</label>
+								</div>
+								<div style="margin: 5px">
+									<button
+										id="iconTicketId"
+										class="btn btn-sm btn-rounded btn-tertiary"
+										data-mdb-placement="bottom"
+										data-mdb-toggle="tooltip"
+										style="
+											margin-right: 7px;
+											margin-bottom: 5px;
+											margin-top: 5px;
+										"
+										type="button"
+										title="Clear text box"
+									>
+										<i class="fa-solid fa-eraser"></i>
+									</button>
+									<button
+										id="buttonAddTicketNumber"
+										class="btn btn-sm btn-primary btn-floating"
+										data-mdb-placement="bottom"
+										data-mdb-toggle="tooltip"
+										type="button"
+										style="
+											margin-right: 7px;
+											margin-bottom: 5px;
+											margin-top: 5px;
+										"
+										title="Insert ticket Id"
+									>
+										<i class="fa-solid fa-ticket"></i>
+									</button>
+								</div>
+
+								<!--  Form for airportCode -->
+								<div class="form-outline">
+									<input
+										id="airportCodePrompt"
+										class="form-control"
+										type="text"
+									/>
+									<label
+										class="form-label"
+										for="airportCodePrompt"
+									>
+										Airport Code
+									</label>
+								</div>
+								<div style="margin: 5px">
+									<button
+										id="iconAirportCode"
+										class="btn btn-sm btn-rounded btn-tertiary"
+										data-mdb-placement="right"
+										data-mdb-toggle="tooltip"
+										style="
+											margin-right: 7px;
+											margin-bottom: 5px;
+											margin-top: 5px;
+										"
+										type="button"
+										title="Clear text box"
+									>
+										<i class="fa-solid fa-eraser"></i>
+									</button>
+								</div>
+
+								<!-- @note form for RegionCode -->
+								<div class="form-outline">
+									<input
+										id="regionInputPrompt"
+										class="form-control"
+										type="text"
+									/>
+									<label
+										class="form-label"
+										for="regionInputPrompt"
+									>
+										Region Code
+									</label>
+								</div>
+								<div style="margin: 5px">
+									<button
+										id="iconRegion"
+										class="btn btn-sm btn-rounded btn-tertiary"
+										data-mdb-placement="right"
+										data-mdb-toggle="tooltip"
+										type="button"
+										style="
+											margin-right: 7px;
+											margin-bottom: 5px;
+											margin-top: 5px;
+										"
+										title="Clear text box"
+									>
+										<i class="fa-solid fa-eraser"></i>
+									</button>
+								</div>
+
+								<!-- @note ticket description -->
+								<div class="form-outline">
+									<input
+										id="channelDetailsPrompt"
+										class="form-control"
+										type="text"
+									/>
+									<label
+										class="form-label"
+										for="channelDetailsPrompt"
+									>
+										Ticket Description
+									</label>
+								</div>
+								<div style="margin: 5px">
+									<button
+										id="iconSlackDetail"
+										class="btn btn-sm btn-rounded btn-tertiary"
+										data-mdb-placement="bottom"
+										data-mdb-toggle="tooltip"
+										type="button"
+										style="
+											margin-right: 7px;
+											margin-bottom: 5px;
+											margin-top: 5px;
+										"
+										title="Clear text box"
+									>
+										<i class="fa-solid fa-eraser"></i>
+									</button>
+									<button
+										id="buttonAddTicketDescription"
+										class="btn btn-sm btn-primary btn-floating"
+										data-mdb-placement="bottom"
+										data-mdb-toggle="tooltip"
+										type="button"
+										style="
+											margin-right: 7px;
+											margin-bottom: 5px;
+											margin-top: 5px;
+										"
+										title="Parse ticket title"
+									>
+										<i class="fa-solid fa-wand-magic-sparkles"></i>
+									</button>
+								</div>
+								<br />
+
+								<!-- Active User Aliases -->
+								<div id="typeaheadUserAliasesPlaceholder"></div>
+								<br />
+								<br />
+
+								<!-- Channel Name Preview -->
+								<div class="form-outline">
+									<a
+										id="iconCopyButton"
+										href="#"
+									>
+										<i class="fas fa-info-circle trailing"></i>
+									</a>
+									<textarea
+										id="channelNamePreview"
+										class="form-control textarea text-area resize-ta font-monospace text-bg-info"
+										style="
+											font-size: 0.9rem !important;
+											color: #39c0ed;
+											pointer-events: none;
+										"
+										readonly
+										maxlength="80"
+									></textarea>
+									<label
+										id="channelNamePreviewLabel"
+										class="form-label"
+										for="channelNamePreview"
+										style="font-size: 0.85rem !important"
+										>Channel name preview</label
+									>
+									<button
+										id="copyTextChannelPreview"
+										class="btn btn-sm btn-rounded copied"
+										style="float: right; margin-top: 4px"
+										>Copy</button
+									>
+								</div>
+
+								<div
+									id="characterCount"
+									style="color: #39c0ed; font-size: 0.9rem; margin-top: 4px"
+									>0/80</div
+								>
+								<br />
+
+								<!-- additional notes accordion -->
+								<div
+									id="accordionAdditionalNotes"
+									class="accordion accordion-borderless form-control-plaintext"
+								>
+									<div class="accordion-item">
+										<h2
+											id="notesHeader"
+											class="accordion-header"
+										>
+											<button
+												class="accordion-button collapsed"
+												data-mdb-target="#flush-collapseOneX"
+												data-mdb-toggle="collapse"
+												aria-controls="flush-collapseOneX"
+												aria-expanded="true"
+												type="button"
+												style="
+													margin-right: 7px;
+													margin-bottom: 5px;
+													margin-top: 5px;
+												"
+											>
+												Add channel topic ...
+											</button>
+										</h2>
+										<div
+											id="flush-collapseOneX"
+											class="accordion-collapse collapse"
+											data-mdb-parent="#accordionFlushExampleX"
+											aria-labelledby="flush-headingOneX"
+										>
+											<div class="accordion-body">
+												<div
+													id="ModalEdit_NotesDiv"
+													class="modal-body"
+												>
+													<!-- additional notes textbox -->
+													<div
+														id="NotesAccordion"
+														class="form-outline"
+													>
+														<textarea
+															id="channelTopicPrompt"
+															class="form-control"
+															rows="4"
+														></textarea>
+														<label
+															class="form-label"
+															for="channelTopicPrompt"
+														>
+															Enter a topic here
+														</label>
+													</div>
+													<button
+														id="iconNotes"
+														class="btn btn-sm btn-rounded btn-tertiary"
+														data-mdb-placement="bottom"
+														data-mdb-toggle="tooltip"
+														style="
+															margin-right: 7px;
+															margin-bottom: 5px;
+															margin-top: 5px;
+														"
+														type="button"
+														title="Clear text box"
+													>
+														<i class="fa-solid fa-eraser"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- end of body -->
+							</div>
+
+							<!--  modal footer -->
+							<div class="modal-footer justify-content-between">
+								<!--  clear button -->
+								<button
+									id="clearBtn"
+									class="btn btn-warning btn-rounded"
+									data-mdb-placement="bottom"
+									data-mdb-toggle="tooltip"
+									title="⚠️ Clear all form fields"
+									type="button"
+									style="position: relative; align-self: baseline"
+								>
+									Clear
+								</button>
+								<div>
+									<div class="btn-group-md md-3">
+										<!--  Close Modal Button -->
+										<button
+											id="modalEditButtonClose"
+											class="btn btn-secondary btn-rounded"
+											data-mdb-dismiss="modal"
+											type="button"
+										>
+											Close
+										</button>
+
+										<!--  Confirm Channel Button -->
+										<button
+											id="modalEditButtonToConfirmModal"
+											class="btn btn-primary btn-rounded"
+											data-mdb-target="#modalConfirm"
+											data-mdb-toggle="modal"
+											role="button"
+											style="vertical-align: middle"
+										>
+											<span>
+												Create Slack Channel
+												<img
+													style="border-radius: 20%"
+													src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACD0lEQVQ4T4XTT0iTcRjA8e/zbstIh5HDTr0iFFhQl2TSrXJQWEinoJkQKHjoUNc0CtOti4qyCgKFILt0rkOg/TmYFHlwG2PhZQYdGgumoc22vU+88022Ket3+PH7vfyeD+/z8DxC1WpfzAYMixfATwpcyuXGoCivgSY1tCd2cXSuPESqAf9Cdh4473wP59bG7eOgvSm8j3WNnPsfMAoMbQfI1FYJ0FtO0FK0a6S9JoCq0fFxLWAhzaKazK1PXK8J2DmLMiSKt1KWWKGueDufnhyuAD4Z/lMd+gD0jBr6UPwL2R9Ac3Ut7Lsog7/XJw6XA4IOKvLGeZ+2gQRwfE8ABjbXxhF46oDPMJhX5blT1IT4P2RbcdOvSH05YqAJ83vjDFwl2dDWJ6pNnn35J1t/3McMcdl12cCl05Jq6W2FYr8q9S61ZvOe4oor77kpQsb8lp/hJWTqkn1iyImKv1Q23DAtKbMnAVpKQdBekE6FG9t3Bg5EYohIKYXdSxOSMoM7RbRULhiiYeC0k+OU91E8DYT2BkjLqhkMKNxBZLFl9ei9VXPlcznQOPb1vrW/MInqyQpE9BcWoV2tnDKDX8qBhkh0VnC1iZA+tLQ8J8NYNTuxGvA+jts9/a+VQ77u6N3awJFr7xA5W3okhBsi8Z1hAt76uqOdNQGnJvY4ZxDX5YORZQroKxAflvb4rsQqxvkvAP7cDMlru0QAAAAASUVORK5CYII="
+													alt="Triggers SlackButton"
+												/>
+											</span>
+										</button>
+									</div>
+
+									<!--  Checkbox Element -->
+									<div
+										id="checkboxDiv"
+										class="modal-body"
+										data-mdb-placement="left"
+										data-mdb-toggle="tooltip"
+										tabindex="0"
+										title="feature pending"
+									>
+										<div class="form-check form-switch">
+											<input
+												id="flexSwitchCheckDefault"
+												class="form-check-input disabled"
+												type="checkbox"
+												disabled
+												role="switch"
+											/>
+											<label
+												class="form-check-label disabled"
+												for="flexSwitchCheckDefault"
+											>
+												Post comment
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--  End of modalEdit -->
+
+				<!--  Modal End Program -->
+				<div
+					id="modalConfirmCloseFinal"
+					class="modal fade"
+					aria-hidden="true"
+					aria-labelledby="modalConfirmCloseFinal"
+					tabindex="-1"
+				>
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5
+									id="modalConfirmCloseFinal_h5"
+									class="modal-title"
+								>
+									<i
+										class="fa-solid fa-triangle-exclamation"
+										style="margin-right: 7px"
+									></i>
+								</h5>
+							</div>
+							<div class="modal-body">
+								Would you like to clear all form values?
+							</div>
+							<div class="modal-footer">
+								<button
+									id="modalConfirmCloseFinalCloseButton"
+									class="btn btn-warning btn-rounded"
+									data-mdb-dismiss="modal"
+									data-mdb-target="#modalEditConfirmCloseModal"
+								>
+									Close and Clear Saved Data
+								</button>
+								<button
+									id="modalConfirmCloseFinalSaveButton"
+									class="btn btn-primary btn-rounded"
+									data-mdb-dismiss="modal"
+									data-mdb-target="#modalEditConfirmCloseModal"
+								>
+									Save Changes and Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--  Modal Confirm Close -->
+				<div
+					id="modalEditConfirmCloseModal"
+					class="modal fade"
+					aria-hidden="true"
+					aria-labelledby="modalEditConfirmCloseModal"
+					tabindex="-1"
+				>
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5
+									id="ModalEdit_ConfirmClose_Modal_h5"
+									class="modal-title"
+								>
+									<i
+										class="fa-solid fa-triangle-exclamation"
+										style="margin-right: 7px"
+									></i>
+									Warning
+								</h5>
+							</div>
+							<div class="modal-body">
+								Would you like to clear all form values?
+							</div>
+							<div class="modal-footer">
+								<button
+									id="modalEditButtonDiscardClose"
+									class="btn btn-danger btn-rounded"
+									data-mdb-dismiss="modal"
+									data-mdb-target="#modalEditConfirmCloseModal"
+								>
+									Clear Forms
+								</button>
+								<button
+									id="modalEditButtonSaveChangesClose"
+									class="btn btn-primary btn-rounded"
+									data-mdb-dismiss="modal"
+									data-mdb-target="#modalEditConfirmCloseModal"
+								>
+									Back
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- modalConfirm -->
+				<div
+					id="modalConfirm"
+					class="modal fade"
+					data-backdrop="static"
+					data-toggle="modal"
+					aria-hidden="true"
+					aria-labelledby="modalConfirm"
+					role="dialog"
+					tabindex="-1"
+				>
+					<div
+						class="modal-dialog modal-fullscreen"
+						style="height: inherit"
+						role="document"
+					>
+						<div class="modal-content">
+							<div class="modal-header">
+								<!--  Text for alert here: info alert with instructions on  Edit Modal -->
+								<div
+									id="modalConfirmAlert"
+									class="alert alert-info d-flex fade show"
+									role="alert"
+									style="
+										position: relative;
+										margin: initial;
+										align-items: flex-start;
+									"
+								>
+									<div
+										id="modalConfirmAlertIcon"
+										style="align-self: baseline"
+									>
+										<i class="fa-solid fa-circle-info"></i>
+									</div>
+									<div
+										id="ModalConfirm_AlertBody"
+										style="
+											margin-right: 10px;
+											position: relative;
+											margin-left: 1rem;
+										"
+									>
+										1. On the green alert box, you'll get a link to redirect to
+										@Slackbot. Allow pop-up if prompted.
+										<p></p>
+										2. You'll also receive a DM from @Slackbot. Follow the
+										prompts in Slack to continue.
+									</div>
+									<button
+										class="btn-close"
+										data-mdb-dismiss="alert"
+										aria-label="Close"
+										type="button"
+										style="margin: left; align-self: baseline"
+									></button>
+								</div>
+							</div>
+							<!--  End modal header section -->
+
+							<!-- modalConfirm body beginning -->
+							<div
+								id="modalConfirmBody"
+								class="modal-body"
+							></div>
+							<div
+								class="modal-footer"
+								style="display: flow-root"
+							>
+								<button
+									id="modalConfirmButtonBack"
+									class="btn btn-dark btn-rounded"
+									style="float: left; display: block"
+									type="button"
+								>
+									<span>Back</span>
+								</button>
+								<button
+									id="modalConfirmButtonSubmitChannel"
+									class="btn btn-primary btn-rounded"
+									type="button"
+									style="float: right; display: block"
+								>
+									<span id="ChangeSlackBtn">
+										Submit
+										<img
+											id="SlackIcon"
+											style="border-radius: 20%"
+											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACD0lEQVQ4T4XTT0iTcRjA8e/zbstIh5HDTr0iFFhQl2TSrXJQWEinoJkQKHjoUNc0CtOti4qyCgKFILt0rkOg/TmYFHlwG2PhZQYdGgumoc22vU+88022Ket3+PH7vfyeD+/z8DxC1WpfzAYMixfATwpcyuXGoCivgSY1tCd2cXSuPESqAf9Cdh4473wP59bG7eOgvSm8j3WNnPsfMAoMbQfI1FYJ0FtO0FK0a6S9JoCq0fFxLWAhzaKazK1PXK8J2DmLMiSKt1KWWKGueDufnhyuAD4Z/lMd+gD0jBr6UPwL2R9Ac3Ut7Lsog7/XJw6XA4IOKvLGeZ+2gQRwfE8ABjbXxhF46oDPMJhX5blT1IT4P2RbcdOvSH05YqAJ83vjDFwl2dDWJ6pNnn35J1t/3McMcdl12cCl05Jq6W2FYr8q9S61ZvOe4oor77kpQsb8lp/hJWTqkn1iyImKv1Q23DAtKbMnAVpKQdBekE6FG9t3Bg5EYohIKYXdSxOSMoM7RbRULhiiYeC0k+OU91E8DYT2BkjLqhkMKNxBZLFl9ei9VXPlcznQOPb1vrW/MInqyQpE9BcWoV2tnDKDX8qBhkh0VnC1iZA+tLQ8J8NYNTuxGvA+jts9/a+VQ77u6N3awJFr7xA5W3okhBsi8Z1hAt76uqOdNQGnJvY4ZxDX5YORZQroKxAflvb4rsQqxvkvAP7cDMlru0QAAAAASUVORK5CYII="
+											alt="Triggers SlackButton"
+										/>
+									</span>
+								</button>
+								<button
+									id="modalConfirmPendingButton"
+									class="btn btn-rounded btn-warning"
+									style="float: right; display: none"
+									type="button"
+								>
+									<span style="margin-right: 6px"> Loading... </span>
+									<div
+										class="spinner-border"
+										role="status"
+										style="width: 1rem; height: 1rem; border-width: 0.2em"
+									>
+										<span class="visually-hidden"></span>
+									</div>
+								</button>
+								<button
+									id="modalConfirmFinishedButton"
+									class="btn btn-rounded btn-success"
+									button
+									type="button"
+									style="cursor: not-allowed; float: right; display: none"
+								>
+									<span style="margin-right: 7px; cursor: not-allowed">
+										Complete!
+									</span>
+									<i
+										class="fa-solid fa-check-double"
+										style="
+											margin-left: 0px;
+											cursor: not-allowed;
+											font-size: 1.23em;
+										"
+									></i>
+								</button>
+								<button
+									id="modalConfirmButtonClose"
+									class="btn btn-secondary btn-rounded"
+									data-mdb-dismiss="modal"
+									style="float: right; display: block"
+									modalConfirmButtonBack
+									type="button"
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--  End modalConfirm Body -->
+
+				<!-- 				Accordion body placeholder
+				user entered text is displayed on main page -->
+				<br />
+				<div
+					id="accordionPlaceholder"
+					style="display: block !important"
+				>
+					<p class="placeholder-glow">
+						<span
+							class="placeholder w-75 placeholder-lg bg-info"
+							style="height: 2.2rem"
+						></span>
+					</p>
+					<p class="placeholder-glow">
+						<span
+							class="placeholder w-100 placeholder-lg bg-dark"
+							style="height: 2.2rem"
+						></span>
+					</p>
+					<p class="placeholder-glow">
+						<span
+							class="placeholder w-100 placeholder-lg"
+							style="height: 2.2rem"
+						></span>
+					</p>
+					<p class="placeholder-glow">
+						<span
+							class="placeholder w-100 placeholder-lg"
+							style="height: 2.2rem"
+						></span>
+					</p>
+					<p class="placeholder-glow">
+						<span
+							class="placeholder w-100 placeholder-lg"
+							style="height: 2.2rem"
+						></span>
+					</p>
+					<p class="placeholder-glow">
+						<span
+							class="placeholder w-100 placeholder-lg"
+							style="height: 2.2rem"
+						></span>
+					</p>
+					<p class="placeholder-glow">
+						<span
+							class="placeholder w-100 placeholder-lg"
+							style="height: 2.2rem"
+						></span>
+					</p>
+				</div>
+				<div
+					id="accordionSlackEntry"
+					class="accordion accordion-flush"
+					style="display: none !important"
+				>
+					<h2
+						id="headingOne"
+						class="accordion-header"
+					>
+						<button
+							id="Button_collapseOne"
+							class="accordion-button"
+							data-mdb-target="#collapseOne"
+							data-mdb-toggle="collapse"
+							aria-controls="collapseOne"
+							aria-expanded="true"
+							type="button"
+						>
+							Ticket Id
+						</button>
+					</h2>
+					<div
+						id="collapseOne"
+						class="accordion-collapse collapse show"
+						data-mdb-parent="#accordionSlackEntry"
+						aria-labelledby="headingOne"
+					>
+						<div
+							id="body1"
+							class="accordion-body"
+						>
+							<span
+								id="ticketId"
+								class="text-muted"
+								>...</span
+							>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<h2
+							id="headingTwo"
+							class="accordion-header"
+						>
+							<button
+								id="Button_collapseTwo"
+								class="accordion-button collapsed"
+								data-mdb-target="#collapseTwo"
+								data-mdb-toggle="collapse"
+								aria-controls="collapseTwo"
+								aria-expanded="false"
+								type="button"
+							>
+								Airport Code
+							</button>
+						</h2>
+						<div
+							id="collapseTwo"
+							class="accordion-collapse collapse"
+							data-mdb-parent="#accordionSlackEntry"
+							aria-labelledby="headingTwo"
+						>
+							<div
+								id="body2"
+								class="accordion-body"
+							>
+								<span
+									id="airportCode"
+									class="text-muted"
+									>...</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<h2
+							id="headingThree"
+							class="accordion-header"
+						>
+							<button
+								id="Button_collapseThree"
+								class="accordion-button collapsed"
+								data-mdb-target="#collapseThree"
+								data-mdb-toggle="collapse"
+								aria-controls="collapseThree"
+								aria-expanded="false"
+								type="button"
+							>
+								Region Code
+							</button>
+						</h2>
+						<div
+							id="collapseThree"
+							class="accordion-collapse collapse"
+							data-mdb-parent="#accordionSlackEntry"
+							aria-labelledby="headingThree"
+						>
+							<div
+								id="body3"
+								class="accordion-body"
+							>
+								<span
+									id="regionCode"
+									class="text-muted"
+								>
+									...
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<h2
+							id="headingFour"
+							class="accordion-header"
+						>
+							<button
+								id="Button_collapseFour"
+								class="accordion-button collapsed"
+								data-mdb-target="#collapseFour"
+								data-mdb-toggle="collapse"
+								aria-controls="collapseFour"
+								aria-expanded="false"
+								type="button"
+							>
+								Channel Details
+							</button>
+						</h2>
+						<div
+							id="collapseFour"
+							class="accordion-collapse collapse"
+							data-mdb-parent="#accordionSlackEntry"
+							aria-labelledby="headingFour"
+						>
+							<div
+								id="body4"
+								class="accordion-body"
+							>
+								<span
+									id="channelDetails"
+									class="text-muted"
+								>
+									...
+								</span>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<h2
+								id="headingFive"
+								class="accordion-header"
+							>
+								<button
+									id="Button_collapseFive"
+									class="accordion-button collapsed"
+									data-mdb-target="#collapseFive"
+									data-mdb-toggle="collapse"
+									aria-controls="collapseFive"
+									aria-expanded="false"
+									type="button"
+								>
+									Additional Notes
+								</button>
+							</h2>
+							<div
+								id="collapseFive"
+								class="accordion-collapse collapse"
+								data-mdb-parent="#accordionSlackEntry"
+								aria-labelledby="headingFive"
+							>
+								<div
+									id="body5"
+									class="accordion-body"
+								>
+									<span
+										id="slackNotes"
+										class="text-muted"
+									>
+										...
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--  end of accordion on display page  -->
+				<!--  outside button group -->
+				<br />
+				<div
+					id="mainButtonGroupPlaceholder"
+					class="placeholder-glow"
+					style="display: block !important"
+				>
+					<a
+						class="btn btn-sm btn-primary btn-rounded disabled placeholder col-4 float-end"
+						aria-hidden="true"
+						tabindex="-1"
+					></a>
+				</div>
+
+				<button
+					id="modalEditMainWindowButton"
+					class="btn btn-primary mr-auto float-end btn-rounded"
+					data-mdb-target="#modalEdit"
+					data-mdb-toggle="modal"
+					role="button"
+					style="display: none !important"
+				>
+					Edit
+				</button>
+
+				<!--  end outside button group  -->
+				<br />
+				<br />
+				<!--  container ending div -->
+			</div>
+		</div>
+
+		<!-- secondary Javascript dir -->
+		<script
+			type="text/javascript"
+			src="./node_modules/jquery/dist/jquery.min.js"
+		></script>
+		<script
+			type="text/javascript"
+			src="./node_modules/mdb-ui-kit/js/mdb.min.js"
+		></script>
+		<script
+			type="text/javascript"
+			src="./node_modules/bootstrap-dark-5/dist/js/darkmode.min.js"
+		></script>
+	</body>
+</html>
+<!--  Main body end -->

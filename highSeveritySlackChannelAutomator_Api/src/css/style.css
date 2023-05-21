@@ -1,0 +1,371 @@
+.alert {
+	width: -moz-available !important;
+	width: -webkit-fill-available !important;
+}
+
+.button-slack span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button-slack span:after {
+	content: ' →';
+	opacity: 0;
+	position: absolute;
+	right: -20px;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button-slack {
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	width: 200px;
+	background-color: #375a7f;
+	border: 0.5px solid #0000;
+	border-radius: 4px;
+	margin-left: 3px;
+	padding: 5px;
+	font-size: 14px;
+	transition: all 0.5s;
+	display: inline-block;
+	height: auto;
+}
+
+.button-slack.disabled,
+.button-slack:disabled {
+	cursor: not-allowed;
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+.button-slack:hover span {
+	padding-right: 25px;
+}
+
+.button-slack:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+.button-slack:hover {
+	background-color: #30384f;
+	border-color: #49a9f4;
+	border: 1.5px solid transparent;
+}
+
+.button-slackActive {
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-webkit-user-select: none;
+	background-color: #f0ad4e;
+	border-radius: 4px;
+	border: 1px solid transparent;
+	color: #a1a1a1;
+	cursor: not-allowed;
+	display: inline-block;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: normal;
+	height: 45px;
+	line-height: 1.25;
+	margin-left: 0px;
+	margin-right: 50px;
+	position: relative;
+	transition: all 0.2s ease-in-out;
+	transition: all 0.5s;
+	user-select: none;
+	vertical-align: middle;
+	width: 150px;
+}
+
+.button-slackFinished span {
+	cursor: not-allowed;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button-slackFinished span:after {
+	content: '';
+	cursor: not-allowed;
+	opacity: 0;
+	position: absolute;
+	right: -13px;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button-slackFinished {
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-webkit-user-select: none;
+	background-color: #18a30382;
+	border-color: #01549b;
+	border-radius: 0.25rem;
+	border-radius: 4px;
+	border: 1px solid transparent;
+	color: #ffffffb4;
+	cursor: not-allowed;
+	display: inline-block;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: normal;
+	height: 40px;
+	line-height: 1.25;
+	margin-left: 3px;
+	padding: 0.5rem 1rem;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	transition: all 0.5s;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 150px;
+}
+
+.button-slackFinished.disabled,
+.button-slackFinished:disabled {
+	cursor: not-allowed;
+	opacity: 0.4;
+}
+
+.button-slackFinished:hover span {
+	cursor: not-allowed;
+	padding-right: 13px;
+}
+
+.button-slackFinished:hover span:after {
+	cursor: not-allowed;
+	opacity: 1;
+	right: 0;
+}
+
+.button-slackFinished:hover {
+	background-color: #034604;
+	cursor: not-allowed;
+}
+
+.button-slackPending span {
+	cursor: not-allowed;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button-slackPending span:after {
+	content: ' ';
+	cursor: not-allowed;
+	opacity: 0;
+	position: absolute;
+	right: -20px;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button-slackPending {
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-webkit-user-select: none;
+	border-radius: 0.25rem;
+	border-radius: 4px;
+	border: 1px solid transparent;
+	color: #ffffffb4;
+	cursor: not-allowed;
+	display: inline-block;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: normal;
+	height: 40px;
+	line-height: 1.25;
+	margin-left: 3px;
+	padding: 0.5rem 1rem;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	transition: all 0.5s;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 150px;
+}
+
+.button-slackPending:hover span {
+	cursor: not-allowed;
+	padding-right: 25px;
+}
+
+.button-slackPending:hover span:after {
+	cursor: not-allowed;
+	opacity: 1;
+	right: 0;
+}
+
+.token-input {
+	vertical-align: top;
+	display: inline;
+	border: 1px solid #ccc;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.token {
+	background: #ccc;
+	padding: 5px 10px;
+	margin: 5px;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.button-slackPending:hover {
+	border-color: #49a9f4;
+	border: 1.5px solid transparent;
+	cursor: not-allowed;
+}
+
+.button-slackSend span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button-slackSend span:after {
+	content: ' →';
+	opacity: 0;
+	position: absolute;
+	right: -20px;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button-slackSend {
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-webkit-user-select: none;
+	background-color: #0259a5b7;
+	border-color: #01549b;
+	border-radius: 0.25rem;
+	border: 1px solid transparent;
+	color: #ffffffb4;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: normal;
+	height: 36px;
+	line-height: 1.25;
+	margin-left: 3px;
+	padding: 0.5rem 1rem;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 150px;
+}
+
+.button-slackSend:hover span {
+	padding-right: 25px;
+}
+
+.button-slackSend:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+.button-slackSend:hover {
+	background-color: #025aa5;
+	border-color: #49a9f4;
+	border: 1.5px solid transparent;
+}
+
+.copied {
+	transition: all 0.3s ease;
+}
+
+.display-text span:after {
+	padding-left: 1px;
+}
+
+.display-text span:before {
+	padding-left: 1px;
+}
+
+.display-text {
+	border-radius: 4px;
+	padding-left: 20px;
+}
+
+.input,
+.input-wrap .input {
+	left: 0 !important;
+	position: absolute !important;
+	width: 100% !important;
+}
+
+.input-wrap {
+	position: relative !important;
+}
+
+.popup-content {
+	overflow: auto !important;
+}
+
+.textarea {
+	/* border: 1px solid #ccc; */
+	font-family: inherit;
+	font-size: inherit;
+	padding: 1px 6px !important;
+}
+
+.textarea {
+	display: block !important;
+	line-height: 20px !important;
+	min-height: 40px !important;
+	overflow: hidden !important;
+	resize: both !important;
+	width: 100% !important;
+}
+
+.textarea[contenteditable]:empty::before {
+	/* 	color: gray !important; */
+	content: '...' !important;
+}
+
+.wrap-text {
+	word-break: break-word !important;
+}
+
+html.dark .form-control:focus {
+	/* color: #b1b1b1; */
+	border-color: transparent !important;
+}
+
+body,
+html {
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	width: 100%;
+}
+
+#canvas {
+	bottom: 0;
+	height: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	min-width: 406px;
+}

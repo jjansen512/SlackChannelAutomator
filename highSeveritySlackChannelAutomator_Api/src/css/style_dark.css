@@ -1,0 +1,6 @@
+.accordion-button,
+.accordion-button:not(.collapsed) {
+    color: #656565 !important;
+    background-color: #d3dde4 !important;
+}
+/* testChangeME */

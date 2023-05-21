@@ -1,0 +1,10 @@
+node_modules
+make_extension.sh
+xpi.ignore
+indexPlaceholder.html
+.yarnclean
+.env
+.parcel-cache
+.cache
+bower_components
+package-lock.json

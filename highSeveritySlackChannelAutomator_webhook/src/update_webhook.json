@@ -1,0 +1,56 @@
+{
+    "addons": {
+        "{43e17862-f72b-4926-b6ba-8336e5881731}": {
+            "updates": [
+                {
+                    "version": "1.6.6",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.6.5.xpi"
+                },
+                {
+                    "version": "1.6.5",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.6.5.xpi"
+                },
+                {
+                    "version": "1.6.4",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.6.4.xpi"
+                },
+                {
+                    "version": "1.6.3",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.6.3.xpi"
+                },
+                {
+                    "version": "1.6.2",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.6.2.xpi"
+                },
+                {
+                    "version": "1.6.1",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.6.1.xpi"
+                },
+                {
+                    "version": "1.6.0",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.6.0.xpi"
+                },
+                {
+                    "version": "1.5.9",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.5.9.xpi"
+                },
+                {
+                    "version": "1.5.5",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.5.5.xpi"
+                },
+                {
+                    "version": "1.5.4",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.5.4.xpi"
+                },
+                {
+                    "version": "1.5.3",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.5.3.xpi"
+                },
+                {
+                    "version": "1.5.2",
+                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_webhook-1.5.2.xpi"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.dark-theme {
+	.react-select__control {
+		background-color: #333 !important;
+		color: #fff !important;
+		border-color: #fff !important;
+
+		&:hover {
+			border-color: #fff !important;
+		}
+	}
+
+	.react-select__menu {
+		background-color: #333 !important;
+		color: #fff !important;
+	}
+
+	.react-select__option {
+		background-color: #444 !important;
+		color: #fff !important;
+	}
+}
