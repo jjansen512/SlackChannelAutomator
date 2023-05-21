@@ -4,7 +4,7 @@
             "updates": [
                 {
                     "version": "1.5.0",
-                    "update_link": "https://d18inaxsxeymg3.cloudfront.net/slackchannelautomator_Api-1.5.0.xpi"
+                    "update_link": "https://github.com/jjansen512/SlackChannelAutomator/blob/master/highSeveritySlackChannelAutomator_Api/Final_Extension/web-ext-artifacts/slackchannelautomator_Api-1.5.0.xpi"
                 }
             ]
         }
