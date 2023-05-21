@@ -34,6 +34,12 @@ Webhook Version: `1.6.6` API Beta Version: `1.5.0`
   - Click "Load Unpacked" in the upper left.
   - Go to the cloned repository and open the extension from this directory: `highSeveritySlackChannelAutomator_webhook/dist/`.
 
+### Video Demo
+
+[![Slack Channel Automator Demo](https://img.youtube.com/vi/XlwKRvAZ5xQ/0.jpg)](https://youtu.be/XlwKRvAZ5xQ)
+
+Click the image above to watch a video demonstration of how to install and use some of the features in the Slack Channel Automator.
+
 ## Configuration
 
 - Here's an example of how to customize the extension with a specific Slack webhook URL or Bot token:
