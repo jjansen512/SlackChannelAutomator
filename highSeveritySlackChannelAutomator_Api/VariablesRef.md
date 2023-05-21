@@ -183,7 +183,7 @@ brazil ws create <name>
 brazil ws use --package HighSeveritySlackChannelFirefox_Extension --versionSet HighSeveritySlackChannelFirefox_Extension/Prod_Clone
 ```
 
-_Sequence to sync to amazon git_:
+_Sequence to sync to youruserportal.yourcompany.com git_:
 
 ```shell
 ## Use --dry-run to test

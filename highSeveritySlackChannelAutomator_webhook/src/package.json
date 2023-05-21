@@ -8,8 +8,8 @@
         "start": "parcel serve ./manifest.json --config @parcel/config-webextension --public-url / --dist-dir ../dist"
     },
     "author": "@jjansena",
-    "repository": "ssh://git.amazon.com/pkg/HighSeveritySlackChannelAutomator",
-    "homepage": "https://code.amazon.com/packages/HighSeveritySlackChannelAutomator",
+    "repository": "ssh://git.youruserportal.yourcompany.com/pkg/HighSeveritySlackChannelAutomator",
+    "homepage": "https://code.youruserportal.yourcompany.com/packages/HighSeveritySlackChannelAutomator",
     "license": "ISC",
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.2.1",

@@ -32,7 +32,7 @@ Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
 ### Chrome Instructions
 
 - In Chrome it will need to be installed manually as an unpacked estension:
-  - Clone the repository in code.amazon.com: `git clone ssh://git.amazon.com/pkg/HighSeveritySlackAutomator`
+  - Clone the repository in code.youruserportal.yourcompany.com: `git clone ssh://git.youruserportal.yourcompany.com/pkg/HighSeveritySlackAutomator`
   - In Chrome, go to: `chrome://extensions`, and enable developer mode.
   - Load Unpacked in the upper left.
   - Go to the cloned repository and open the extension from this directory:
@@ -79,7 +79,7 @@ async function sendPayload(payloadToSend, slackNotes) {
 
 	console.log('Sending payload:', preppedFormData)
 
-	//! Enter your amazon API gateway key here if using Lambda
+	//! Enter your youruserportal.yourcompany.com API gateway key here if using Lambda
 	let headersList = {
 		'Content-Type': 'application/json',
 		'x-api-key': 'aws-api-gateway-key',

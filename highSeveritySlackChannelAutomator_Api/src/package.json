@@ -7,8 +7,8 @@
         "start": "parcel serve ./manifest.json --config @parcel/config-webextension --public-url / --dist-dir ../dist"
     },
     "author": "@jjansena",
-    "repository": "ssh://git.amazon.com/pkg/HighSeveritySlackChannelAutomator/highSeveritySlackChannelAutomator_Api/",
-    "homepage": "https://code.amazon.com/packages/HighSeveritySlackChannelAutomator/highSeveritySlackChannelAutomator_Api/",
+    "repository": "ssh://git.youruserportal.yourcompany.com/pkg/HighSeveritySlackChannelAutomator/highSeveritySlackChannelAutomator_Api/",
+    "homepage": "https://code.youruserportal.yourcompany.com/packages/HighSeveritySlackChannelAutomator/highSeveritySlackChannelAutomator_Api/",
     "license": "ISC",
     "dependencies": {
         "@aws-sdk/client-secrets-manager": "^3.292.0",

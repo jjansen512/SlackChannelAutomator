@@ -84,9 +84,9 @@ const TicketSelect = (props) => {
 			const tabs = await queryTabsPromise(options)
 			let newTabUrls = []
 
-			// Use for of loop to check if the tab urls contain t.corp.amazon.com
+			// Use for of loop to check if the tab urls contain t.corp.youruserportal.yourcompany.com
 			for (let tab of tabs) {
-				if (tab.url.includes('t.corp.amazon.com')) {
+				if (tab.url.includes('t.corp.youruserportal.yourcompany.com')) {
 					// If tabUrl in tabUrls array matches the regex,
 					// then push the tabId, tabUrl, and tabTitle to the tabUrls array
 					if (regex.test(tab.url.split('/')[3])) {
@@ -289,7 +289,7 @@ async function waitForUsers() {
 		let [aliases] = userAliases
 		uniqueAliases = Array.from(new Set(aliases)).sort()
 
-		console.log(`Active users on t.corp.amazon.com:`, `${uniqueAliases}`)
+		console.log(`Active users on t.corp.youruserportal.yourcompany.com:`, `${uniqueAliases}`)
 
 		if (uniqueAliases) {
 			let data = uniqueAliases
