@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "slack-channel-automator-webhook-version",
-    "version": "1.6.6",
-    "description": "Version 1.6.6 - Automator to streamline the Slack channel creation process",
+    "version": "1.6.7",
+    "description": "Version 1.6.7 - Automator to streamline the Slack channel creation process",
     "permissions": [
         "storage",
         "tabs",
@@ -25,7 +25,7 @@
         "gecko": {
             "id": "{43e17862-f72b-4926-b6ba-8336e5881731}",
             "strict_min_version": "60.0",
-            "update_url": "https://d18inaxsxeymg3.cloudfront.net/update_webhook.json"
+            "update_url": "https://github.com/jjansen512/SlackChannelAutomator/blob/master/highSeveritySlackChannelAutomator_webhook/src/update_webhook.json"
         }
     }
 }

@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "slack-channel-automator-api",
-    "version": "1.4.7",
-    "description": "Automatically creates a slack channel, invites users, and sets a topic.",
+    "version": "1.5.0",
+    "description": "Version 1.5.0 - Automator to streamline the Slack channel creation process",
     "permissions": [
         "storage",
         "tabs",
@@ -16,14 +16,16 @@
         "48": "./Icons/Chrome Store/48x48.png",
         "128": "./Icons/Chrome Store/128x128.png"
     },
-    "content_security_policy": "script-src 'self' https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js; object-src 'self'",
+    "content_security_policy": "object-src 'self'; script-src 'self'",
     "browser_action": {
-        "default_title": "SlackChannelAutomator-api",
+        "default_title": "Slack Channel Automator Api Version",
         "default_popup": "./index.html"
     },
     "applications": {
         "gecko": {
-            "update_url": "https://raw.githubusercontent.com/jjansena/handleUpdates/5569d5adac8a9a1a1da4c7e97acb6581d570b305/update.json"
+            "id": "{1dde1687-5d69-4280-b881-acdfb9ba84b5}",
+            "strict_min_version": "60.0",
+            "update_url": "https://github.com/jjansen512/SlackChannelAutomator/blob/master/highSeveritySlackChannelAutomator_webhook/src/update_webhook.json"
         }
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "slack-channel-automator-webhook-version",
-    "version": "1.6.6",
+    "version": "1.6.7",
     "description": "Automator to streamline the Slack channel creation process",
     "type": "module",
     "scripts": {

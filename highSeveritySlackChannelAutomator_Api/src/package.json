@@ -1,6 +1,6 @@
 {
     "name": "slack-channel-automator-api",
-    "version": "1.4.7",
+    "version": "1.5.0",
     "description": "Automatically creates a slack channel, invites users, and sets a topic.",
     "scripts": {
         "ext": "parcel build ./manifest.json --config @parcel/config-webextension --dist-dir ../dist {--no-source-maps}\\",
