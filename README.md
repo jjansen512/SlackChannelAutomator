@@ -4,7 +4,7 @@ Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
 
 **Important:**
 
-> This exetension is a portfolio demo and I can customize for the ticketing system used by a specific company. In it's current state, it has not been configured to scrape usernames and ticket IDs or run the final step of creating the Slack Channel.
+> This exetension is a portfolio demo and it can be customized for a particular ticketing system. In it's current state, it has not been configured to scrape usernames and ticket IDs or to run the final step of creating the Slack Channel. It is available to give a general demonstration of the UI.
 
 > The extension works with URLs in the following format: `https://t.corp.{your_company}.com/<Ticket_ID>` 
 >   > It can easily be tailored for any url however.
