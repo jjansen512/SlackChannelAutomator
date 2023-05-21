@@ -17,7 +17,9 @@ critical production impacting tickets.
 
 - There are two versions of the extension:
   - The version in the Api directory interacts with the Slack API to fully automate creating a channel and invite users.
-  - The version in the webhook directory is able to be used now with a Slack Workspace. It sends the user a message via
+    - In order to use the Api version, a user must enter their BOT token in the code, as well as configure a SlackBot with the _create.channel_ permissions.
+    - Functionallity will be added in the future to automate this step so the user doesn't have to manually edit the code.
+  - The version in the webhook directory is able to be used with a Slack Workspace. It sends the user a message via
     webhook, so they can copy and paste the Slack commands into the message box.
 - The extension is designed to create channels for tickets that use the SIM portal; however, it can also be used to create any Slack channel directly, and add users in the select menu by manually typing usernames.
 
