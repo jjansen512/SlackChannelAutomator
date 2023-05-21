@@ -2,6 +2,13 @@
 
 Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
 
+**Important:**
+
+> This exetension is a portfolio demo and I can customize for the ticketing system used by a specific company. In it's current state, it has not been configured to scrape usernames and ticket IDs or run the final step of creating the Slack Channel.
+
+> The extension works with URLs in the following format: `https://t.corp.{your_company}.com/<Ticket_ID>` 
+>   > It can easily be tailored for any url however.
+
 ## Introduction
 
 - The High Severity Slack Channel Automator aims to automate the repetitive task of creating a Slack channel to discuss
@@ -32,13 +39,6 @@ Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
     `highSeveritySlackChannelAutomator_webhook/dist/`.
 
 ## Configuration
-
-**Important:**
-
-> This exetension is a portfolio demo and I can customize for the ticketing system used by a specific company.
-
-> The extension currently works with URLs in the following format: `https://t.corp.{your_company}.com/<Ticket_ID>` 
->   > It can easily be tailored for any url however.
 
 - Here's an example of how one would customize the extension with a specific Slack webhook url, or Bot token... 
 
