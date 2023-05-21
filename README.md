@@ -1,27 +1,24 @@
 # Slack Channel Automator
 
-Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
+Webhook Version: `1.6.6` API Beta Version: `1.5.0`
 
 **Important:**
 
-> This extension is a portfolio demo and it can be customized for a particular ticketing system. In it's current state, it has not been configured to scrape usernames and ticket IDs or to run the final step of creating the Slack Channel. It is available to give a general demonstration of the UI.
+> This extension serves as a portfolio demo and can be customized for a specific ticketing system. Currently, it is not configured to scrape usernames and ticket IDs or perform the final step of creating the Slack Channel. It is available to provide a general demonstration of the user interface.
 
-> The extension works with URLs in the following format: `https://t.corp.{your_company}.com/<Ticket_ID>` 
->   > It can easily be tailored for any url however.
+> The extension works with URLs in the following format: `https://t.corp.{your_company}.com/<Ticket_ID>`. However, it can be easily tailored for any URL.
 
 ## Introduction
 
-- The  Slack Channel Automator aims to automate the repetitive task of creating a Slack channel to discuss
-critical production impacting tickets.
-  - Engineers often need to manually open Slack, and navigate between different rooms and DMs to complete this task taking time away from addressing the issue.
+- The Slack Channel Automator aims to automate the repetitive task of creating a Slack channel to discuss critical production impacting tickets.
+  - Engineers often manually open Slack and navigate between different rooms and DMs to complete this task, which takes time away from addressing the issue.
 
 - There are two versions of the extension:
-  - The version in the Api directory interacts with the Slack API to fully automate creating a channel and invite users.
-    - In order to use the Api version, a user must enter their BOT token in the code, as well as configure a SlackBot with the _create.channel_ permissions.
-    - Functionallity will be added in the future to automate this step so the user doesn't have to manually edit the code.
-  - The version in the webhook directory is able to be used with a Slack Workspace. It sends the user a message via
-    webhook, so they can copy and paste the Slack commands into the message box.
-- The extension is designed to create channels for tickets that use the SIM portal; however, it can also be used to create any Slack channel directly, and add users in the select menu by manually typing usernames.
+  - The version in the API directory interacts with the Slack API to fully automate the process of creating a channel and inviting users.
+    - To use the API version, the user needs to enter their BOT token in the code and configure a SlackBot with the permissions to create channels.
+    - Future functionality will be added to automate this step and eliminate the need for manual code editing.
+  - The version in the webhook directory can be used with a Slack Workspace. It sends the user a message via webhook, allowing them to copy and paste the Slack commands into the message box.
+- The extension is designed to create channels for tickets that use the SIM portal. However, it can also be used to create any Slack channel directly and add users in the select menu by manually typing usernames.
 
 ## Installation
 
@@ -31,18 +28,17 @@ critical production impacting tickets.
 
 ### Chrome Instructions
 
-- In Chrome it will need to be installed manually as an unpacked estension:
+- In Chrome, the extension needs to be installed manually as an unpacked extension:
   - Clone the repository in code.youruserportal.yourcompany.com: `git clone ssh://git.youruserportal.yourcompany.com/pkg/HighSeveritySlackAutomator`
-  - In Chrome, go to: `chrome://extensions`, and enable developer mode.
-  - Load Unpacked in the upper left.
-  - Go to the cloned repository and open the extension from this directory:
-    `highSeveritySlackChannelAutomator_webhook/dist/`.
+  - In Chrome, go to: `chrome://extensions` and enable developer mode.
+  - Click "Load Unpacked" in the upper left.
+  - Go to the cloned repository and open the extension from this directory: `highSeveritySlackChannelAutomator_webhook/dist/`.
 
 ## Configuration
 
-- Here's an example of where to customize the extension with a specific Slack webhook url, or Bot token... 
+- Here's an example of how to customize the extension with a specific Slack webhook URL or Bot token:
 
-  - First, cd to the main.js file here:
+  - First, navigate to the main.js file here:
 
 ```shell
 $ cd ./HighSeveritySlackAutomator/highSeveritySlackChannelAutomator_webhook/src/js
@@ -54,9 +50,9 @@ Or:
 $ cd ./HighSeveritySlackAutomator/highSeveritySlackChannelAutomator_API/src/js
 ```
 
-- Then find this function below and enter your specific information
-  - Additionally, the AWS API Gateway code can be un-commented if you wish to use the extension with a backend rest API.
-    - It is worth noting that function can easily be tweaked to work with another service besides AWS API Gateway.
+- Then find the following function and enter your specific information:
+  - Additionally, the AWS API Gateway code can be uncommented if you wish to use the extension with a backend REST API.
+    - It is worth noting that the function can easily be tweaked to work with another service besides AWS API Gateway.
 
 ```js
 async function sendPayload(payloadToSend, slackNotes) {
@@ -66,7 +62,9 @@ async function sendPayload(payloadToSend, slackNotes) {
 
 	/*
 				
-	let preppedFormData = JSON.stringify({
+	let pre
+
+ppedFormData = JSON.stringify({
 		slackChannelName: payloadToSend,
 		currentUserAlias: currentUser,
 		activeUsers: selectionAliases,
@@ -138,7 +136,7 @@ async function sendPayload(payloadToSend, slackNotes) {
 }
 ```
 
-- In the API version, you would edit this function, entering your BOT token.
+- In the API version, you would edit this function and enter your BOT token.
 
 ```js
 
@@ -162,32 +160,27 @@ async function sendPayload(payloadToSend, slackNotes) {
 
 ## How it Works
 
-High level, this extension automates repetitive Slack channel creation processes. Its scope is limited to creating
-private channels, inviting users to the channels, and setting channel topics. All this can be done in an extension
-rather than navigating around Slack, increasing productivity. On the channels, users collaborate to troubleshoot tickets
-in SIM `t.corp.{your_company}.com`.
+At a high level, this extension automates the repetitive process of creating Slack channels. Its scope is limited to creating private channels, inviting users to the channels, and setting channel topics. All of this can be done within the extension, eliminating the need to navigate around Slack and increasing productivity. Users collaborate on the channels to troubleshoot tickets in SIM `t.corp.{your_company}.com`.
 
-_In summary, the below problems were identified, and the extension addresses them:_
+_In summary, the extension addresses the following identified problems and provides solutions:_
 
 - Creating a Slack channel for tickets is time-consuming and distracting for engineers.
-- This manual process can take valuable time away from addressing high-severity tickets.
-- Engineers must manually switch between rooms and DMs on Slack, as well as post comments on various SIM tickets to
-  bring in desired help.
+- This manual process takes valuable time away from addressing high-severity tickets.
+- Engineers must manually switch between rooms and DMs on Slack, as well as post comments on various SIM tickets to bring in desired help.
 
-_The extension solves these problems automatically by:_
+_The extension automatically solves these problems by:_
 
-- Creating a Slack channel with an identifiable title relating to the ticket.
-- Adding the engineer logged into Slack, as well as users who interacted with the ticket to the new channel.
-- If desired, setting a topic entered by the engineer.
+- Creating a Slack channel with an identifiable title related to the ticket.
+- Adding the engineer logged into Slack, as well as users who interacted with the ticket, to the new channel.
+- Optionally setting a topic entered by the engineer.
 
 ## Operational Overview
 
-- The extension is built using JavaScript and is compatible with modern browsers. There is a Firefox version and a pending Chromium-compatible version that needs to be installed as an unpacked
-  extension.
-- When the engineer loads the extension, it parses HTML from the current tab from SIM and:
-  - Extracts the ticket ID
+- The extension is built using JavaScript and is compatible with modern browsers. There is a version for Firefox and a version compatible with Chromium that needs to be installed as an unpacked extension.
+- When the engineer loads the extension, it parses HTML from the current tab in SIM and performs the following actions:
+  - Extracts the ticket ID.
   - Stores all user aliases who have commented on the ticket in a JSON payload.
-- The user enters information in the input form, including airport code, region, and channel details.
+- The user enters information in the input form, including region code, and channel details if desired.
 - Once submitted, the extension:
   - Sends a POST request containing the payload via a secure HTTPS connection and an API key.
-    - There's an option to send the POST request to AWS lambda for added security or directly to the Slack webhook.
+    - There's an option to send the POST request to AWS Lambda for added security or directly to the Slack webhook or API.
