@@ -11,7 +11,7 @@ Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
 
 ## Introduction
 
-- The High Severity Slack Channel Automator aims to automate the repetitive task of creating a Slack channel to discuss
+- The  Slack Channel Automator aims to automate the repetitive task of creating a Slack channel to discuss
   high-severity tickets.
   - Engineers often need to manually open Slack, navigate between different rooms and DMs to complete this task.
   - If the ticket is a clone of a high-side issue, the owner will either have to reach out to the low-side engineer
