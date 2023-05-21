@@ -1,4 +1,4 @@
-# High Severity Slack Channel Automator
+# Slack Channel Automator
 
 Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
 
