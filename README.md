@@ -12,16 +12,14 @@ Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
 ## Introduction
 
 - The  Slack Channel Automator aims to automate the repetitive task of creating a Slack channel to discuss
-  high-severity tickets.
-  - Engineers often need to manually open Slack, navigate between different rooms and DMs to complete this task.
-  - If the ticket is a clone of a high-side issue, the owner will either have to reach out to the low-side engineer
-    directly or post a comment on that ticket with the channel information.
-- There are two versions:
+critical production impacting tickets.
+  - Engineers often need to manually open Slack, and navigate between different rooms and DMs to complete this task taking time away from addressing the issue.
+
+- There are two versions of the extension:
   - The version in the Api directory interacts with the Slack API to fully automate creating a channel and invite users.
   - The version in the webhook directory is able to be used now with a Slack Workspace. It sends the user a message via
     webhook, so they can copy and paste the Slack commands into the message box.
-- The extension is designed to create channels for SIM tickets; however, it can also be used to create any Slack channel
-  and add users right from the browser.
+- The extension is designed to create channels for tickets that use the SIM portal; however, it can also be used to create any Slack channel directly, and add users in the select menu by manually typing usernames.
 
 ## Installation
 
@@ -40,7 +38,7 @@ Webhook Version: `1.6.6` Api Beta Version: `1.5.0`
 
 ## Configuration
 
-- Here's an example of how one would customize the extension with a specific Slack webhook url, or Bot token... 
+- Here's an example of where to customize the extension with a specific Slack webhook url, or Bot token... 
 
   - First, cd to the main.js file here:
 
@@ -56,7 +54,7 @@ $ cd ./HighSeveritySlackAutomator/highSeveritySlackChannelAutomator_API/src/js
 
 - Then find this function below and enter your specific information
   - Additionally, the AWS API Gateway code can be un-commented if you wish to use the extension with a backend rest API.
-    - This function can easily be tweaked to work with another service besides AWS API Gateway.
+    - It is worth noting that function can easily be tweaked to work with another service besides AWS API Gateway.
 
 ```js
 async function sendPayload(payloadToSend, slackNotes) {
@@ -182,9 +180,7 @@ _The extension solves these problems automatically by:_
 
 ## Operational Overview
 
-- The extension is built using JavaScript and is compatible with modern browsers.
-- It requires the user to be logged into Midway and have the active browser tab set to a URL containing a SIM ticket ID.
-  There is a Firefox version and a pending Chromium-compatible version that needs to be installed as an unpacked
+- The extension is built using JavaScript and is compatible with modern browsers. There is a Firefox version and a pending Chromium-compatible version that needs to be installed as an unpacked
   extension.
 - When the engineer loads the extension, it parses HTML from the current tab from SIM and:
   - Extracts the ticket ID
@@ -192,9 +188,4 @@ _The extension solves these problems automatically by:_
 - The user enters information in the input form, including airport code, region, and channel details.
 - Once submitted, the extension:
   - Sends a POST request containing the payload via a secure HTTPS connection and an API key.
-    - Option to send the POST request to AWS lambda for added security or directly to the Slack webhook.
-  - The handle-slack-channel function parses the payload and reads the data.
-  - Depending on the content of the payload, the handle-slack-channel function will interact with the Slack API/write
-    the Slack commands to create a channel, invite users, and add a channel topic, if configured to do so.
-- The front-end receives a response from the back-end, with either a completion message and a link to the channel or an
-  error message.
+    - There's an option to send the POST request to AWS lambda for added security or directly to the Slack webhook.
