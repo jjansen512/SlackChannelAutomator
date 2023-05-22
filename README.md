@@ -24,7 +24,7 @@ Webhook Version: `1.6.6` API Beta Version: `1.5.0`
 
 ### Download the `Webhook Version` 👉 [here](https://github.com/jjansen512/SlackChannelAutomator/blob/master/highSeveritySlackChannelAutomator_webhook/Final_Extension/web-ext-artifacts/slackchannelautomator_webhook-1.6.7.xpi)
 
-### Download the beta `API Version` 👉 [here](https://d18inaxsxeymg3.cloudfront.net/8c9608cd34374b04adf0-1.4.7.xpi)
+### Download the beta `API Version` 👉 [here](https://github.com/jjansen512/SlackChannelAutomator/blob/master/highSeveritySlackChannelAutomator_Api/Final_Extension/web-ext-artifacts/8c9608cd34374b04adf0-1.4.7.xpi)
 
 ### Chrome Instructions
 
