@@ -22,17 +22,17 @@ Webhook Version: `1.6.6` API Beta Version: `1.5.0`
 
 ## Installation
 
-### Download the extension for Firefox `Webhook Version` 👉 [here](https://github.com/jjansen512/SlackChannelAutomator/blob/master/highSeveritySlackChannelAutomator_webhook/Final_Extension/web-ext-artifacts/slackchannelautomator_webhook-1.6.7.xpi)
+### Download the `Webhook Version` 👉 [here](https://github.com/jjansen512/SlackChannelAutomator/blob/master/highSeveritySlackChannelAutomator_webhook/Final_Extension/web-ext-artifacts/slackchannelautomator_webhook-1.6.7.xpi)
 
-### Download the beta extension for Firefox `API Version` 👉 [here](https://d18inaxsxeymg3.cloudfront.net/8c9608cd34374b04adf0-1.4.7.xpi)
+### Download the beta `API Version` 👉 [here](https://d18inaxsxeymg3.cloudfront.net/8c9608cd34374b04adf0-1.4.7.xpi)
 
 ### Chrome Instructions
 
-- In Chrome, the extension needs to be installed manually as an unpacked extension:
+- In Chrome, the extension needs to be installed manually as an unpacked extension pending approval of a packaged version:
   - Clone the repository in code.youruserportal.yourcompany.com: `git clone ssh://git.youruserportal.yourcompany.com/pkg/HighSeveritySlackAutomator`
   - In Chrome, go to: `chrome://extensions` and enable developer mode.
   - Click "Load Unpacked" in the upper left.
-  - Go to the cloned repository and open the extension from this directory: `highSeveritySlackChannelAutomator_webhook/dist/`.
+  - Go to the cloned repository and open the extension from this directory: `./HighSeveritySlackAutomator/highSeveritySlackChannelAutomator_webhook/dist/`.
 
 ### Video Demo
 
