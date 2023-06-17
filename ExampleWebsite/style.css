@@ -1,0 +1,61 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+}
+
+nav {
+	background-color: #333;
+	overflow: hidden;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	float: left;
+}
+
+nav a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+.container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.username-section,
+.ticket-section {
+	margin-bottom: 20px;
+}
+
+.ticket-section textarea {
+	width: 100%;
+	height: 100px;
+}
+
+.tickets-display {
+	text-align: left;
+}
+
+.tickets-display ul {
+	list-style: none;
+	padding: 0;
+}

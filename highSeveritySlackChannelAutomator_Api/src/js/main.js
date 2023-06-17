@@ -119,7 +119,9 @@ window.onload = () => {
 
 		//? ------------------- Handle Manually Entered Ticket Id ------------------ //
 
-		const userTicketPrompt = document.getElementById('userTicketPromptInput')
+		const userTicketPrompt = document.getElementById(
+			'userTicketPromptInput'
+		)
 		const userTicketPromptButton = document.getElementById(
 			'userTicketPromptButton'
 		)
@@ -248,7 +250,9 @@ window.onload = () => {
 							extractedAirports.push(extractedAirport)
 						}
 
-						title = title.replace(`[${match}]`, ' ').replace(match, ' ')
+						title = title
+							.replace(`[${match}]`, ' ')
+							.replace(match, ' ')
 					}
 				})
 
@@ -264,19 +268,29 @@ window.onload = () => {
 
 						// Find the corresponding airport code for the matched region
 						const regionIndex = regionMap.findIndex(
-							(obj) => obj.code.toLowerCase() === match.toLowerCase()
+							(obj) =>
+								obj.code.toLowerCase() === match.toLowerCase()
 						)
 
 						if (regionIndex !== -1) {
-							const correspondingAirport = regionMap[regionIndex].airport
+							const correspondingAirport =
+								regionMap[regionIndex].airport
 
 							// Add region code to extractedCodes if not present
-							if (!extractedCodes.includes(regionMap[regionIndex].code)) {
+							if (
+								!extractedCodes.includes(
+									regionMap[regionIndex].code
+								)
+							) {
 								extractedCodes.push(regionMap[regionIndex].code)
 							}
 
 							// Add corresponding airport code to extractedAirports if not present
-							if (!extractedAirports.includes(correspondingAirport)) {
+							if (
+								!extractedAirports.includes(
+									correspondingAirport
+								)
+							) {
 								extractedAirports.push(correspondingAirport)
 							}
 						}
@@ -413,7 +427,9 @@ window.onload = () => {
 				let lineCharLength = 61
 
 				if (inputElement.value.length >= lineCharLength) {
-					let lineLength = Math.ceil(inputElement.value.length / lineCharLength)
+					let lineLength = Math.ceil(
+						inputElement.value.length / lineCharLength
+					)
 					inputElement.style.height = lineLength * 90 + 'px'
 				} else if (inputElement.value.length < lineCharLength) {
 					inputElement.style.height = 40 + 'px'
@@ -444,7 +460,8 @@ window.onload = () => {
 		//? ----------------------- Close modalConfirm Button ---------------------- //
 
 		modalConfirmButtonClose.addEventListener('click', () => {
-			const modalConfirmAlert = document.querySelector('#modalConfirmAlert')
+			const modalConfirmAlert =
+				document.querySelector('#modalConfirmAlert')
 			const checkClass = modalConfirmAlert.getAttribute('class')
 			const modalConfirmCloseFinalCloseButton = document.querySelector(
 				'#modalConfirmCloseFinalCloseButton'
@@ -530,8 +547,11 @@ window.onload = () => {
 		}
 
 		iconSlackDetail.onclick = () => {
-			let slackChannelDetails = document.getElementById('channelDetailsPrompt')
-			let slackChannelDetailsText = document.getElementById('channelDetails')
+			let slackChannelDetails = document.getElementById(
+				'channelDetailsPrompt'
+			)
+			let slackChannelDetailsText =
+				document.getElementById('channelDetails')
 
 			slackChannelDetails.value = ''
 			slackChannelDetailsText.textContent = '...'
@@ -633,8 +653,9 @@ window.onload = () => {
 				modalConfirmButtonClose.classList.remove('disabled')
 
 				modalConfirmButtonSubmitChannel.style.display = 'block'
-				document.getElementById('modalConfirmPendingButton').style.display =
-					'none'
+				document.getElementById(
+					'modalConfirmPendingButton'
+				).style.display = 'none'
 
 				$('#modalEdit').modal('hide')
 				$('#modalConfirm').modal('show')
@@ -766,7 +787,10 @@ window.onload = () => {
 			var newTitle = []
 
 			for (const char of title) {
-				if (newTitle.length === 0 || char !== newTitle[newTitle.length - 1]) {
+				if (
+					newTitle.length === 0 ||
+					char !== newTitle[newTitle.length - 1]
+				) {
 					newTitle.push(char)
 				}
 			}
@@ -781,8 +805,10 @@ window.onload = () => {
 			) {
 				for (let i = 0; i < repeatedWords.length - 2; i++) {
 					if (
-						repeatedWords[i] === repeatedWords[repeatedWords.length - 2] &&
-						repeatedWords[i] === repeatedWords[repeatedWords.length - 3]
+						repeatedWords[i] ===
+							repeatedWords[repeatedWords.length - 2] &&
+						repeatedWords[i] ===
+							repeatedWords[repeatedWords.length - 3]
 					) {
 						repeatedWords.splice(i, 2)
 						title = repeatedWords.join('-')
@@ -896,7 +922,9 @@ window.onload = () => {
 				  document
 						.querySelector('#css-toggle-btn')
 						.classList.add('btn-secondary'))
-				: (document.querySelector('#css-toggle-btn').classList.add('btn-dark'),
+				: (document
+						.querySelector('#css-toggle-btn')
+						.classList.add('btn-dark'),
 				  document
 						.querySelector('#css-toggle-btn')
 						.classList.remove('btn-secondary'))
@@ -918,7 +946,10 @@ window.onload = () => {
 				let [aliases] = userAliases
 				uniqueAliases = Array.from(new Set(aliases)).sort()
 
-				console.log(`Active users on t.corp.amazon.com:`, `${uniqueAliases}`)
+				console.log(
+					`Active users on ExampleWebsite:`,
+					`${uniqueAliases}`
+				)
 
 				if (uniqueAliases) {
 					let data = uniqueAliases
@@ -964,10 +995,14 @@ window.onload = () => {
 						components={makeAnimated()}
 						options={uniqueAliases}
 						placeholder={
-							uniqueAliases.length > 0 ? 'Select user alias' : 'No users found'
+							uniqueAliases.length > 0
+								? 'Select user alias'
+								: 'No users found'
 						}
 						onChange={(selectedOptions) => {
-							selectionAliases = selectedOptions.map((option) => option.value)
+							selectionAliases = selectedOptions.map(
+								(option) => option.value
+							)
 						}}
 						onInputChange={handleInputChange}
 						theme={(theme) => ({
@@ -1036,10 +1071,14 @@ window.onload = () => {
 					return new Promise(async (resolve) => {
 						for (const tab of tabs) {
 							const splitUrl = tab.url.split('/')
-							const urlContainsHostname = splitUrl.includes('t.corp.amazon.com')
+							const urlContainsHostname =
+								splitUrl.includes('ExampleWebsite')
 
 							if (urlContainsHostname) {
-								console.log(`Found active url matching domain: `, `${tab.url}`)
+								console.log(
+									`Found active url matching domain: `,
+									`${tab.url}`
+								)
 								const regex = /^[a-zA-Z]\d{0,14}$/
 
 								if (regex.test(splitUrl[3])) {
@@ -1052,7 +1091,9 @@ window.onload = () => {
 									ticketTitle = await getActiveTabTitle()
 								}
 							} else {
-								console.log(`No matching url found in active tab`)
+								console.log(
+									`No matching url found in active tab`
+								)
 							}
 						}
 						resolve()
@@ -1072,7 +1113,8 @@ window.onload = () => {
 					async (tabs) => {
 						for (const tab of tabs) {
 							const splitUrl = tab.url.split('/')
-							const urlContainsHostname = splitUrl.includes('t.corp.amazon.com')
+							const urlContainsHostname =
+								splitUrl.includes('ExampleWebsite')
 
 							if (urlContainsHostname) {
 								console.log(
@@ -1176,7 +1218,9 @@ window.onload = () => {
 
 			const urlOnLoad = localStorage.getItem('urlOnLoad')
 			const savedStorageTicketId = localStorage.getItem('savedTicket')
-			const popupUrl = chrome.extension.getURL('High Severity Slack Button')
+			const popupUrl = chrome.extension.getURL(
+				'High Severity Slack Button'
+			)
 
 			$('#modalEditButtonToConfirmModal').attr(
 				'class',
@@ -1190,19 +1234,21 @@ window.onload = () => {
 
 				document.getElementById('ticketInputPrompt').value =
 					savedStorageTicketId
-				document.getElementById('ticketId').innerText = savedStorageTicketId
-
+				document.getElementById('ticketId').innerText =
+					savedStorageTicketId
 				localStorage.setItem('urlOnLoad', currentUrl[0])
 			}
 
 			if (urlOnLoad !== currentUrl[0]) {
-				console.log(`URL change detected, program will input new ticketId...`)
+				console.log(
+					`URL change detected, program will input new ticketId...`
+				)
 
 				console.log(`Set the following ticketId  👉 ${parsedTicketId}`)
 
-				document.getElementById('ticketInputPrompt').value = parsedTicketId
+				document.getElementById('ticketInputPrompt').value =
+					parsedTicketId
 				document.getElementById('ticketId').innerText = parsedTicketId
-
 				localStorage.setItem('urlOnLoad', currentUrl[0])
 			}
 
@@ -1223,8 +1269,10 @@ window.onload = () => {
 				let splitUrl = finalUrl.split('/')
 
 				// Check if the URL ends in /communication
-				if (splitUrl[4] === 'communication') {
-					console.log('The active tab has a URL that ends in /communication')
+				if (splitUrl[9] === 'communication.html') {
+					console.log(
+						'The active tab has a URL that ends in /communication'
+					)
 
 					$('#ModalMismatchedURL').modal('hide')
 
@@ -1325,7 +1373,7 @@ window.onload = () => {
 					let newTabUrls = []
 
 					for (let tab of tabs) {
-						if (tab.url.includes('t.corp.amazon.com')) {
+						if (tab.url.includes('ExampleWebsite')) {
 							if (regex.test(tab.url.split('/')[3])) {
 								newTabUrls.push({
 									tabId: tab.id,
@@ -1365,7 +1413,9 @@ window.onload = () => {
 				}
 
 				if (newTabUrls.length === 0) {
-					console.log('No matching domain or URLs found in current window')
+					console.log(
+						'No matching domain or URLs found in current window'
+					)
 				}
 				setTimeout(() => {
 					setIsLoading(false)
@@ -1455,8 +1505,8 @@ window.onload = () => {
 			return (
 				<>
 					<Select
-						className="basic-single"
-						classNamePrefix="select"
+						className='basic-single'
+						classNamePrefix='select'
 						options={options}
 						isLoading={isLoading}
 						isDisabled={isLoading}
@@ -1544,72 +1594,144 @@ window.onload = () => {
 		//^ ---------------------- Inject Script Active Users ----------------------- //
 
 		async function getUserAliases() {
-			return new Promise((resolve, reject) => {
-				queryTabs(
-					{
-						currentWindow: popupClicked ? false : true,
-						active: true,
-						windowType: 'normal',
-					},
-					(tabs) => {
-						// Inject script into the active tab
+			try {
+				const tabs = await new Promise((resolve) => {
+					queryTabs(
+						{
+							currentWindow: popupClicked ? false : true,
+							active: true,
+							windowType: 'normal',
+						},
+						(tabs) => {
+							resolve(tabs)
+						}
+					)
+				})
 
-						chrome.tabs.executeScript(
-							tabs[0].id,
-							{
-								code: `
-								var userElements =
-								document.querySelectorAll('span.sim-userPopover--name');
+				if (!tabs || tabs.length === 0) {
+					throw new Error('No active tabs found.')
+				}
 
-								// Extract the className and child node for each span element
-								var userInfo = []; for (let i = 0; i < userElements.length; i++)
-								{ let childNode = userElements[i].childNodes[0].data;
-
-								userInfo.push(childNode); }
-								chrome.runtime.sendMessage(userInfo);
-							`,
-							},
-							(results) => {
-								chrome.runtime.lastError
-									? reject(chrome.runtime.lastError.message)
-									: resolve(results[0])
+				const results = await new Promise((resolve, reject) => {
+					chrome.tabs.executeScript(
+						tabs[0].id,
+						{
+							code: `
+							let userElements = document.querySelectorAll('#ticket-list > li > strong');
+							let userInfo = [];
+							for (const element of userElements) {
+								let childNode = element.childNodes[0].data;
+								userInfo.push(childNode);
 							}
-						)
-					}
-				)
-			}).catch((err) => {
-				// Handle rejection here
-				return console.dir(err)
-			})
+							chrome.runtime.sendMessage(userInfo);
+							`,
+						},
+						(results) => {
+							if (chrome.runtime.lastError) {
+								reject(chrome.runtime.lastError.message)
+							} else {
+								resolve(results[0])
+							}
+						}
+					)
+				})
+
+				return results
+			} catch (err) {
+				console.dir(err)
+				throw err
+			}
+		}
+
+		async function getTicketId() {
+			try {
+				const tabs = await new Promise((resolve) => {
+					queryTabs(
+						{
+							currentWindow: popupClicked ? false : true,
+							active: true,
+							windowType: 'normal',
+						},
+						(tabs) => {
+							resolve(tabs)
+						}
+					)
+				})
+
+				if (!tabs || tabs.length === 0) {
+					throw new Error('No active tabs found.')
+				}
+
+				const results = await new Promise((resolve, reject) => {
+					chrome.tabs.executeScript(
+						tabs[0].id,
+						{
+							code: `
+							let ticketNumber = document.querySelector('#ticket-number');
+							let ticketInfo = [];
+							ticketInfo.push(ticketNumber);
+							chrome.runtime.sendMessage(ticketInfo);
+							`,
+						},
+						(results) => {
+							if (chrome.runtime.lastError) {
+								reject(chrome.runtime.lastError.message)
+							} else {
+								resolve(results[0])
+							}
+						}
+					)
+				})
+
+				return results
+			} catch (err) {
+				console.dir(err)
+				throw err // Re-throw the error to be caught by something else
+			}
 		}
 
 		async function clickCommunication() {
-			return new Promise((resolve, reject) => {
-				queryTabs(
-					{
-						currentWindow: popupClicked ? false : true,
-						active: true,
-						windowType: 'normal',
-					},
-					(tabs) => {
-						chrome.tabs.executeScript(
-							tabs[0].id,
-							{
-								code: `
-									document.querySelector('a[id*="communication"]').click()
-								`,
-							},
-							(results) => {
-								chrome.runtime.lastError
-									? reject(chrome.runtime.lastError.message)
-									: resolve(results[0])
+			try {
+				const tabs = await new Promise((resolve) => {
+					queryTabs(
+						{
+							currentWindow: popupClicked ? false : true,
+							active: true,
+							windowType: 'normal',
+						},
+						(tabs) => {
+							resolve(tabs)
+						}
+					)
+				})
+
+				if (!tabs || tabs.length === 0) {
+					throw new Error('No active tabs found.')
+				}
+
+				const results = await new Promise((resolve, reject) => {
+					chrome.tabs.executeScript(
+						tabs[0].id,
+						{
+							code: `
+							document.querySelector("body > nav > ul > li:nth-child(2) > a").click();
+							`,
+						},
+						(results) => {
+							if (chrome.runtime.lastError) {
+								reject(chrome.runtime.lastError.message)
+							} else {
+								resolve(results[0])
 							}
-						)
-					}
-				)
-			}).catch((err) => {
-				return console.dir(err)
-			})
+						}
+					)
+				})
+
+				return results
+			} catch (err) {
+				console.dir(err)
+				throw err // Optionally, re-throw the error if you want it to be caught by something else
+			}
 		}
 
 		//^ ---------------------------- Get Current User ---------------------------- //
@@ -1617,7 +1739,9 @@ window.onload = () => {
 		async function getCurrentUser() {
 			try {
 				// Make GET request to phoneTool
-				const response = await axios.get('https://phonetool.amazon.com/users/')
+				const response = await axios.get(
+					'https://phonetool.amazon.com/users/'
+				)
 
 				const html = response.data,
 					parser = new DOMParser(),
@@ -1662,11 +1786,14 @@ window.onload = () => {
 			let slackNotesKeyToStore = input.slackNotesKey
 
 			document.getElementById('ticketId').innerText = ticketIdKeyToStore
-			document.getElementById('airportCode').innerText = airportCodeKeyToStore
-			document.getElementById('regionCode').innerText = regionCodeKeyToStore
+			document.getElementById('airportCode').innerText =
+				airportCodeKeyToStore
+			document.getElementById('regionCode').innerText =
+				regionCodeKeyToStore
 			document.getElementById('channelDetails').innerText =
 				slackChannelDetailsKeyToStore
-			document.getElementById('slackNotes').innerText = slackNotesKeyToStore
+			document.getElementById('slackNotes').innerText =
+				slackNotesKeyToStore
 
 			if (ticketIdKeyToStore) storeTicketValue(ticketIdKeyToStore)
 			if (airportCodeKeyToStore) storeAirportValue(airportCodeKeyToStore)
@@ -1752,7 +1879,12 @@ window.onload = () => {
 			let regionCode = inputs.regionCodeKey
 			let channelDetails = inputs.slackChannelDetailsKey
 
-			payloadToSend = addDash(ticketId, airportCode, regionCode, channelDetails)
+			payloadToSend = addDash(
+				ticketId,
+				airportCode,
+				regionCode,
+				channelDetails
+			)
 
 			var returnValues = payloadToSend
 			return returnValues
@@ -1839,8 +1971,10 @@ window.onload = () => {
                 `
 				)
 
-				document.getElementById('airportCodePrompt').value = storageAirport
-				document.getElementById('airportCode').innerText = storageAirport
+				document.getElementById('airportCodePrompt').value =
+					storageAirport
+				document.getElementById('airportCode').innerText =
+					storageAirport
 
 				return storageAirport
 			} catch (error) {
@@ -1871,7 +2005,8 @@ window.onload = () => {
 				console.log(`Getting regionCode value from storage:
                         ${storageRegion}`)
 
-				document.getElementById('regionInputPrompt').value = storageRegion
+				document.getElementById('regionInputPrompt').value =
+					storageRegion
 				document.getElementById('regionCode').innerText = storageRegion
 
 				return storageRegion
@@ -1905,7 +2040,10 @@ window.onload = () => {
 					return
 				}
 
-				console.log('channelDetails in localStorage:', storagechannelDetails)
+				console.log(
+					'channelDetails in localStorage:',
+					storagechannelDetails
+				)
 
 				document.getElementById('channelDetailsPrompt').value =
 					storagechannelDetails
@@ -1941,7 +2079,8 @@ window.onload = () => {
 
 				console.log('Getting notes value from storage:', storageNotes)
 
-				document.getElementById('channelTopicPrompt').value = storageNotes
+				document.getElementById('channelTopicPrompt').value =
+					storageNotes
 				document.getElementById('slackNotes').innerText = storageNotes
 
 				return storageNotes
@@ -2066,9 +2205,11 @@ window.onload = () => {
 					console.log(`Set the channel Id to: ${channelId}`)
 
 					// Convert userAliases to email
-					const emails = [currentUserAlias, ...activeUsers].map((user) => {
-						return user.concat('@amazon.com')
-					})
+					const emails = [currentUserAlias, ...activeUsers].map(
+						(user) => {
+							return user.concat('@amazon.com')
+						}
+					)
 					sseData.emails = emails
 
 					console.log('User Emails:', emails)
@@ -2098,7 +2239,10 @@ window.onload = () => {
 
 						userIds.push(responseGetSlackIds.data.user.id)
 
-						console.log('User Id lookup Response: ', responseGetSlackIds.data)
+						console.log(
+							'User Id lookup Response: ',
+							responseGetSlackIds.data
+						)
 						console.log('Slack User Ids: ', userIds)
 
 						try {
@@ -2147,12 +2291,18 @@ window.onload = () => {
 								const response = await axios.request(reqOptions)
 								responseSetTopic = response
 							} catch (error) {
-								console.error('conversations.setTopic error: ', error)
+								console.error(
+									'conversations.setTopic error: ',
+									error
+								)
 							}
 
 							if (responseSetTopic.data.ok) {
 								console.log('Channel topic set...')
-								console.log('Channel topic: ', responseSetTopic.data)
+								console.log(
+									'Channel topic: ',
+									responseSetTopic.data
+								)
 							}
 						}
 					}
@@ -2233,10 +2383,12 @@ window.onload = () => {
 				)
 
 				let slackNotes = response.data.body.message.notes
-				let aliasResponseCurrentUser = response.data.body.input.currentUserAlias
+				let aliasResponseCurrentUser =
+					response.data.body.input.currentUserAlias
 				let slackChannelName = response.data.body.input.slackChannelName
 
-				let aliasResponseActiveUsers = response.data.body.input.activeUsers
+				let aliasResponseActiveUsers =
+					response.data.body.input.activeUsers
 				let channelIdResponse = response.data.body.message.channelId
 
 				let channelURL
@@ -2307,16 +2459,20 @@ window.onload = () => {
 				)
 
 				modalConfirmButtonSubmitChannel.style.display = 'none'
-				document.getElementById('modalConfirmPendingButton').style.display =
-					'none'
-				document.getElementById('modalConfirmFinishedButton').style.display =
-					'block'
+				document.getElementById(
+					'modalConfirmPendingButton'
+				).style.display = 'none'
+				document.getElementById(
+					'modalConfirmFinishedButton'
+				).style.display = 'block'
 
 				// Update modalConfirm box with user input
 				const canvasStyle = 'height: auto; width: 520px;'
 				$('#canvas').attr('style', canvasStyle)
 
-				document.getElementById('modalConfirmBody').innerHTML = /* html */ `
+				document.getElementById(
+					'modalConfirmBody'
+				).innerHTML = /* html */ `
 					<div
 						div
 						class="modal-body"
@@ -2383,7 +2539,10 @@ window.onload = () => {
 				modalConfirmButtonClose.classList.remove('disabled')
 				modalConfirmButtonBack.classList.remove('disabled')
 			} else {
-				console.log('The request responded with a general error: ', response)
+				console.log(
+					'The request responded with a general error: ',
+					response
+				)
 
 				document.getElementById('modalConfirmBody').innerHTML = ''
 
@@ -2408,7 +2567,8 @@ window.onload = () => {
 					'modalConfirmPendingButton'
 				).innerHTML = /* html */ ` <span>Error</span> `
 
-				modalConfirmButtonClose.className = 'btn btn-secondary btn-rounded'
+				modalConfirmButtonClose.className =
+					'btn btn-secondary btn-rounded'
 				modalConfirmButtonBack.classList.remove('disabled')
 			}
 		}
@@ -2450,7 +2610,9 @@ window.onload = () => {
 			let getVal
 			let airportCodeCleaned
 
-			getVal = document.querySelector('#airportCodePrompt').value.toLowerCase()
+			getVal = document
+				.querySelector('#airportCodePrompt')
+				.value.toLowerCase()
 
 			if (!getVal) {
 				document.querySelector('#airportCode').textContent = '...'
@@ -2473,7 +2635,9 @@ window.onload = () => {
 			let getVal
 			let regionInputCleaned
 
-			getVal = document.querySelector('#regionInputPrompt').value.toLowerCase()
+			getVal = document
+				.querySelector('#regionInputPrompt')
+				.value.toLowerCase()
 
 			if (!getVal) {
 				document.querySelector('#regionCode').textContent = '...'
@@ -2557,13 +2721,18 @@ window.onload = () => {
 			const regionCode = document.querySelector('#regionCode')
 			const channelDetails = document.querySelector('#channelDetails')
 			const slackNotes = document.querySelector('#slackNotes')
-			const ticketInputPrompt = document.querySelector('#ticketInputPrompt')
-			const airportCodePrompt = document.querySelector('#airportCodePrompt')
-			const regionInputPrompt = document.querySelector('#regionInputPrompt')
+			const ticketInputPrompt =
+				document.querySelector('#ticketInputPrompt')
+			const airportCodePrompt =
+				document.querySelector('#airportCodePrompt')
+			const regionInputPrompt =
+				document.querySelector('#regionInputPrompt')
 			const channelDetailsPrompt = document.querySelector(
 				'#channelDetailsPrompt'
 			)
-			const channelTopicPrompt = document.querySelector('#channelTopicPrompt')
+			const channelTopicPrompt = document.querySelector(
+				'#channelTopicPrompt'
+			)
 
 			ticketId.textContent = ''
 			airportCode.textContent = ''
@@ -2594,7 +2763,12 @@ window.onload = () => {
 					.classList.add('form-control')
 				document
 					.querySelector('#modalEditButtonToConfirmModal')
-					.classList.add('btn', 'btn-primary', 'btn-rounded', 'disabled')
+					.classList.add(
+						'btn',
+						'btn-primary',
+						'btn-rounded',
+						'disabled'
+					)
 			}
 
 			if (ticketId && characterLength < 80) {
