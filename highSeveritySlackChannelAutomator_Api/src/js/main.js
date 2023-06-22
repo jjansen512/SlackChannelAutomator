@@ -606,8 +606,8 @@ window.onload = () => {
 				}
 
 				$('#modalEditConfirmCloseModal').modal('hide')
-				clickAllIcons()
 				await waitForUsers()
+				clickAllIcons()
 				noValueDots()
 			}
 		}
@@ -627,12 +627,12 @@ window.onload = () => {
 				document.getElementById(
 					'ModalConfirm_AlertBody'
 				).innerHTML = /* html */ `
-				1. On the green alert box, you'll get a link to redirect to @Slackbot.
-				Allow pop-up if prompted.
-				<p></p>
-					2. You'll also receive a DM from @Slackbot. Follow the prompts in
-					Slack to continue.
-			`
+					1. On the green alert box, you'll get a link to redirect to
+					@Slackbot. Allow pop-up if prompted.
+					<p></p>
+					2. You'll also receive a DM from @Slackbot. Follow the
+					prompts in Slack to continue.
+				`
 
 				document
 					.getElementById('modalConfirmPendingButton')
@@ -1373,7 +1373,7 @@ window.onload = () => {
 					let newTabUrls = []
 
 					for (let tab of tabs) {
-						if (tab.url.includes('ExampleWebsite')) {
+						if (tab.url.includes('SlackChannelAutomator')) {
 							if (regex.test(tab.url.split('/')[3])) {
 								newTabUrls.push({
 									tabId: tab.id,

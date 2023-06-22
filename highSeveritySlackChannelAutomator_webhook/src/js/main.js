@@ -1066,8 +1066,9 @@ window.onload = () => {
 					return new Promise(async (resolve) => {
 						for (const tab of tabs) {
 							const splitUrl = tab.url.split('/')
-							const urlContainsHostname =
-								splitUrl.includes('SlackChannelAutomator')
+							const urlContainsHostname = splitUrl.includes(
+								'SlackChannelAutomator'
+							)
 
 							if (urlContainsHostname) {
 								console.log(
@@ -1358,6 +1359,8 @@ window.onload = () => {
 				setIsLoading(true)
 
 				const regex = /^[a-zA-Z]\d{0,14}$/
+				const ticketId =
+					document.querySelector('#ticket-number').innerText
 
 				const queryTabsPromise = (options) =>
 					new Promise((resolve) => {
@@ -1372,12 +1375,12 @@ window.onload = () => {
 
 					for (let tab of tabs) {
 						if (tab.url.includes('t.corp')) {
-							if (regex.test(tab.url.split('/')[3])) {
+							if (regex.test(ticketId)) {
 								newTabUrls.push({
 									tabId: tab.id,
 									tabUrl: tab.url,
 									tabTitle: tab.title,
-									ticketId: tab.url.split('/')[3],
+									ticketId: ticketId,
 								})
 							} else {
 								newTabUrls = []
