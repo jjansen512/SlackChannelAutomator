@@ -20,7 +20,10 @@
 						Math.random() * (1000000000 - 10000000) + 10000000
 					)
 				document.getElementById('ticket-number').innerText =
-					ticketNumber
+					'Ticket Number: ' + ticketNumber
+
+				// Changing the tab title
+				document.title = 'Ticket ' + ticketNumber
 			})
 		</script>
 	</head>
