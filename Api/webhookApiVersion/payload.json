@@ -1,0 +1,23 @@
+{
+  "slackChannelName": "d74652566-apa-dcaaaafasd-us-iso-west-1-us-iso-east-1-dpvs-failure",
+  "currentUserAlias": "jjansena",
+  "activeUsers": [
+    "test",
+    "testa",
+    "testb"
+  ],
+  "httpsAgent": {
+    "_events": {},
+    "_eventsCount": 0,
+    "timeout": null,
+    "maxFreeSockets": 1,
+    "maxSockets": 1,
+    "maxTotalSockets": null,
+    "sockets": {},
+    "freeSockets": {},
+    "requests": {},
+    "options": {},
+    "secureProxy": false,
+    "proxy": {}
+  }
+}
